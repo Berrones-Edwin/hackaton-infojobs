@@ -21,6 +21,7 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
 } from "@chakra-ui/icons";
+import LinkNext from 'next/link'
 
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
@@ -52,6 +53,8 @@ export default function Navbar() {
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Text
+                        as={LinkNext}
+                        href={'/'}
                         textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
                         fontFamily={'heading'}
                         color={'white'}>
@@ -85,11 +88,12 @@ const DesktopNav = () => {
                     <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
                             <Link
+                                as={LinkNext}
                                 p={2}
                                 href={navItem.href ?? '/'}
                                 fontSize={'sm'}
                                 fontWeight={500}
-                                >
+                            >
                                 {navItem.label}
                             </Link>
                         </PopoverTrigger>
@@ -103,6 +107,7 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
     return (
         <Link
+            as={LinkNext}
             href={href}
             role={'group'}
             display={'block'}
@@ -153,6 +158,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
     return (
         <Stack spacing={4} onClick={children && onToggle}>
             <Flex
+                as={LinkNext}
                 py={2}
                 as={Link}
                 href={href ?? '#'}
@@ -187,7 +193,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
                     align={'start'}>
                     {children &&
                         children.map((child) => (
-                            <Link key={child.label} py={2} href={child.href}>
+                            <Link as={LinkNext} key={child.label} py={2} href={child.href}>
                                 {child.label}
                             </Link>
                         ))}
@@ -207,7 +213,7 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
     {
         label: 'Share Review',
-        href: '/',
+        href: '/evaluation',
     },
     {
         label: 'Results',
