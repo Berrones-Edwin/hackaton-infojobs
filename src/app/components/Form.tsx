@@ -1,6 +1,6 @@
 'use client'
 
-import { Input, Stack } from "@chakra-ui/react"
+import { FormControl, FormLabel, Input, Stack } from "@chakra-ui/react"
 import { useState } from "react"
 import { data as dataMock } from '../mocks/data'
 import CompanyDetails from "./CompanyDetails"
@@ -46,11 +46,16 @@ export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
 
     return (
         <>
-            <Stack maxWidth={'100vw'} flex={'row'} justifyContent={'center'} alignItems={'center'}>
-                <Stack w={'500'} h={'150'}>
-                    <h3>Search Company Name</h3>
+            <Stack minWidth={'100vw'} flex={'column'} justifyContent={'center'} alignItems={'center'}>
+                <Stack w={'500'} mt={3} h={'150'}>
+                  
                     <form onSubmit={handleSubmit}>
-                        <Input autoComplete="off" name="form" placeholder="InfoJobs..." value={form} onChange={(e) => setForm(e.target.value)} />
+                        <FormControl>
+                            <FormLabel as='legend'>
+                                Company Name
+                            </FormLabel>
+                            <Input autoComplete="off" name="form" placeholder="InfoJobs..." value={form} onChange={(e) => setForm(e.target.value)} />
+                        </FormControl>
                     </form>
                 </Stack>
                 <Stack>
