@@ -27,7 +27,9 @@ import {
     Tr,
     Td,
     TableCaption,
-    ListIcon
+    ListIcon,
+    Thead,
+    Th
 } from '@chakra-ui/react';
 import { useEffect, useId } from 'react';
 import Link from 'next/link'
@@ -141,7 +143,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
                                         {
                                             Array.from({ length: 5 }).map((idx, arr) => (
-                                                <Tr key={id + '.-'+ arr}>
+                                                <Tr key={id + '.-' + arr}>
                                                     <Td>{"⭐".repeat(arr + 1)}</Td>
                                                     <Td>{peopleRating[arr + 1]}</Td>
                                                 </Tr>
@@ -278,13 +280,13 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
                                         dataEvaluation.map((d: any) => (
 
                                             d['Pros'] === "" ? null :
-                                            <>
-                                                
-                                                <ListItem key={d['Marca temporal'] + "-" + id}>
-                                                    <ListIcon as={CheckCircleIcon} color='green.500' />
-                                                    { d['Pros']}
-                                                </ListItem>
-                                            </>
+                                                <>
+
+                                                    <ListItem key={d['Marca temporal'] + "-" + id}>
+                                                        <ListIcon as={CheckCircleIcon} color='green.500' />
+                                                        {d['Pros']}
+                                                    </ListItem>
+                                                </>
                                         ))
                                     }
                                 </List>
@@ -292,10 +294,10 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
                                     {
                                         dataEvaluation.map((d) => (
                                             d['Cons'] === "" ? null :
-                                            <ListItem key={d['Marca temporal'] + "***" + id}>
-                                                <ListIcon as={SmallCloseIcon} color='red.500' />
-                                                { d['Cons']}
-                                            </ListItem>
+                                                <ListItem key={d['Marca temporal'] + "***" + id}>
+                                                    <ListIcon as={SmallCloseIcon} color='red.500' />
+                                                    {d['Cons']}
+                                                </ListItem>
                                         ))
                                     }
                                 </List>
@@ -329,19 +331,19 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
                             <SimpleGrid mt={2} spacing={10}>
                                 {
-                                   
-                                        <>
-                                         
-                                            <List spacing={2}>
-                                                {dataEvaluation.map((d: any) => (
-                                                    d['Describe your interview process'] === "" ? null :
+
+                                    <>
+
+                                        <List spacing={2}>
+                                            {dataEvaluation.map((d: any) => (
+                                                d['Describe your interview process'] === "" ? null :
                                                     <ListItem key={d['Marca temporal'] + "/-/" + id}>
                                                         <ListIcon as={CheckCircleIcon} color='green.500' />
-                                                        { d['Describe your interview process']}
+                                                        {d['Describe your interview process']}
                                                     </ListItem>
-                                                ))}
-                                            </List>
-                                        </>
+                                            ))}
+                                        </List>
+                                    </>
                                 }
                             </SimpleGrid>
 
@@ -354,8 +356,45 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
                                 fontWeight={'500'}
                                 textTransform={'uppercase'}
                                 mb={'4'}>
-                                Details People Evaluation
+                                Details People Share Their Salary
                             </Text>
+
+                            <SimpleGrid mt={2} spacing={10}>
+                                <TableContainer>
+                                    <Table variant='simple' color="white">
+                                        {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
+                                        <Thead >
+                                            <Tr>
+                                                <Th color="white">Job Title</Th>
+                                                <Th color="white">Job Level</Th>
+                                                <Th color="white">Experience (Years)</Th>
+                                                <Th color="white">Location</Th>
+                                                <Th color="white">Employment Status</Th>
+                                                <Th color="white"> Salary</Th>
+                                            </Tr>
+                                        </Thead>
+                                        <Tbody>
+                                            {
+                                                dataEvaluation.map((d)=>{
+                                                    return d["What would you like to do ? "] === "Salary" ? 
+                                                    (   <>
+                                                            <Tr textAlign={'center'}>
+                                                                <Td>{d['Job Title']}</Td>
+                                                                <Td>{d['Job Level']}</Td>
+                                                                <Td>{d['Total Years of Experience in this Field']}</Td>
+                                                                <Td>{d['Location']}</Td>
+                                                                <Td>{d['Are you a current employee_1']}</Td>
+                                                                <Td>{d['Base Pay']} / {d['Currency']} </Td>
+                                                            </Tr>
+                                                        </>
+                                                    ) 
+                                                    :null
+                                                })
+                                            }                                            
+                                        </Tbody>
+                                    </Table>
+                                </TableContainer>
+                            </SimpleGrid>
 
 
                         </Box>
@@ -363,7 +402,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
                     <Button
                         as={Link}
-                        href={'/review'}
+                        href={'/evaluation'}
                         rounded={'none'}
                         w={'full'}
                         mt={8}
