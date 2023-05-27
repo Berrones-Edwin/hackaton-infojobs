@@ -58,7 +58,6 @@ const levelInterviewProcess = {
 }
 export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
-    console.log({ dataEvaluation });
 
     const id = useId()
 
@@ -72,7 +71,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
             }
         })
-    }, [peopleRating])
+    }, [peopleRating,dataEvaluation])
     useEffect(() => {
 
         dataEvaluation.forEach((d: any) => {
@@ -83,7 +82,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
             }
         })
-    }, [interviewRating])
+    }, [interviewRating,dataEvaluation])
     useEffect(() => {
 
         dataEvaluation.forEach((d: any) => {
@@ -99,7 +98,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
             }
         })
-    }, [levelInterviewProcess])
+    }, [levelInterviewProcess,dataEvaluation])
 
     return (
         <Container maxW={'7xl'}>
