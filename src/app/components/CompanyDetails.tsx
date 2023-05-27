@@ -30,6 +30,7 @@ import {
     ListIcon
 } from '@chakra-ui/react';
 import { useEffect, useId } from 'react';
+import Link from 'next/link'
 type Props = {
     details: {
         name: string,
@@ -361,7 +362,8 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
                     </Stack>
 
                     <Button
-
+                        as={Link}
+                        href={'/'}
                         rounded={'none'}
                         w={'full'}
                         mt={8}
