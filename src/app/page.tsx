@@ -1,10 +1,10 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Review from "./components/Review";
+
 
 export default function Home() {
+
   return (
-    <main>
-      <h3>Hola</h3>
-    </main>
+    <Review />
   )
+
 }
