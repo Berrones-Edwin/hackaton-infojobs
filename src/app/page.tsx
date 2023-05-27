@@ -1,10 +1,10 @@
-import Review from "./components/Review";
+import MainComponent from "./components/MainComponent";
 
 
 export default function Home() {
 
   return (
-    <Review />
+    <MainComponent />
   )
 
 }
