@@ -363,7 +363,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
                     <Button
                         as={Link}
-                        href={'/'}
+                        href={'/review'}
                         rounded={'none'}
                         w={'full'}
                         mt={8}
