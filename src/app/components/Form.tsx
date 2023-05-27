@@ -4,6 +4,7 @@ import { Input, Stack } from "@chakra-ui/react"
 import { useState } from "react"
 import { data as dataMock } from '../mocks/data'
 import CompanyDetails from "./CompanyDetails"
+import CompanyNotFound from "./CompanyNotFound"
 
 
 export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
@@ -35,6 +36,9 @@ export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
 
         setNewDataEvaluation(newData)
 
+        console.log({newData});
+        
+
     }
 
 
@@ -49,7 +53,7 @@ export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
                 </Stack>
                 <Stack>
                     {
-                        data === null || undefined ? null : <CompanyDetails details={data} dataEvaluation={newDataEvaluation} />
+                        newDataEvaluation === null || undefined || newDataEvaluation?.length ===0 ? <CompanyNotFound /> : <CompanyDetails details={data} dataEvaluation={newDataEvaluation} />
                     }
 
                 </Stack>
