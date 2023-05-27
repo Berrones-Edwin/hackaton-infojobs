@@ -10,6 +10,7 @@ import CompanyNotFound from "./CompanyNotFound"
 export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
     const [form, setForm] = useState('')
     const [data, setData] = useState(null)
+    const [flag, setFlag] = useState(false)
     const [newDataEvaluation, setNewDataEvaluation] = useState(null)
 
     const handleSubmit = async (e: any) => {
@@ -31,13 +32,14 @@ export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
 
         setData(companyData)
 
-        const newData = dataEvaluation.filter((data: any) => data['Company Name'].toLowerCase() 
-        === form.toLowerCase())
+        const newData = dataEvaluation.filter((data: any) => data['Company Name'].toLowerCase()
+            === form.toLowerCase())
 
         setNewDataEvaluation(newData)
 
-        console.log({newData});
-        
+        if (newData?.length === 0) setFlag(true)
+        else setFlag(false)
+
 
     }
 
@@ -53,7 +55,10 @@ export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
                 </Stack>
                 <Stack>
                     {
-                        newDataEvaluation === null || undefined || newDataEvaluation?.length ===0 ? <CompanyNotFound /> : <CompanyDetails details={data} dataEvaluation={newDataEvaluation} />
+                        newDataEvaluation === null || undefined || newDataEvaluation?.length === 0 ? null : <CompanyDetails details={data} dataEvaluation={newDataEvaluation} />
+                    }
+                    {
+                        newDataEvaluation?.length === 0 && flag ? <CompanyNotFound /> : null
                     }
 
                 </Stack>
