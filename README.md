@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Company Evaluation
 
-## Getting Started
+Company Evaluation is a website that allows you easily share information  about culture, salaries, interview etc. <br>
 
-First, run the development server:
+## Technologies | Tecnologías 
+
+- NextJs
+- Google Forms
+- Google Sheets
+- TypeScript
+- Chakra UI
+
+
+## Demo
+
+If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](url)
+
+
+## Installation | Instalación
+
+To install and run this proyect just type and execute <br>
+Para instalar y ejecutar el proyecto 
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone (https://github.com/Berrones-Edwin/hackaton-infojobs)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm install
+```
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Preview
 
-## Learn More
+![](https://user-images.githubusercontent.com/44040730/241445582-249ca277-8ef2-4bc6-af4a-13ac0983ebcb.png)
+![](https://user-images.githubusercontent.com/44040730/241445597-404cc93e-b9a8-4130-b917-987fa475315c.png)
+![](https://user-images.githubusercontent.com/44040730/241445855-b9a9e344-0265-49f6-b637-62c53cff3f6f.png)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
