@@ -71,7 +71,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
             }
         })
-    }, [peopleRating,dataEvaluation])
+    }, [dataEvaluation])
     useEffect(() => {
 
         dataEvaluation.forEach((d: any) => {
@@ -82,23 +82,23 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
             }
         })
-    }, [interviewRating,dataEvaluation])
+    }, [dataEvaluation])
     useEffect(() => {
 
         dataEvaluation.forEach((d: any) => {
             if (d["What would you like to do ? "] === "Interview") {
 
 
-                // levelInterviewProcess[d["Level interview process."]] += 1
+                levelInterviewProcess[d["Level interview process."]] += 1
 
-                console.log({ d });
+             
                 // console.log(levelInterviewProcess["Average"]);
 
 
 
             }
         })
-    }, [levelInterviewProcess,dataEvaluation])
+    }, [dataEvaluation])
 
     return (
         <Container maxW={'7xl'}>
