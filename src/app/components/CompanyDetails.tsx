@@ -242,7 +242,7 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                                 </List>
                                 <List spacing={2}>
                                     {
-                                        dataEvaluation.map((d) => (
+                                        dataEvaluation.map((d:any) => (
                                             d['Cons'] === "" ? null :
                                                 <ListItem key={d['Marca temporal'] + "***" + id}>
                                                     <ListIcon as={SmallCloseIcon} color='red.500' />
@@ -254,7 +254,7 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                             </SimpleGrid>
                             <SimpleGrid mt={2} spacing={10}>
                                 {
-                                    dataEvaluation.every((d) => d['Advice'] === "" || null) ? null :
+                                    dataEvaluation.every((d:any) => d['Advice'] === "" || null) ? null :
                                         <>
                                             <p>Advices</p>
                                             <List spacing={2}>

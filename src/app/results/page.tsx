@@ -52,8 +52,6 @@ function evaluateinterviewRating(data) {
         }
     })
 
-    console.log({ interviewRating });
-
 }
 
 function evaluateInterviewProcess(data) {
