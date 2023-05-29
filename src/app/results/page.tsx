@@ -69,7 +69,7 @@ export default async function Results() {
 
 
 
-    const data = await getData()
+    const data:any = await getData()
     evaluatePeopleRating(data)
     evaluateinterviewRating(data)
     evaluateInterviewProcess(data)
