@@ -8,7 +8,6 @@ import {
     Icon,
     Stack,
     Text,
-    useColorModeValue,
   } from '@chakra-ui/react';
   import { ReactElement } from 'react';
   import NextLink from 'next/link'
@@ -30,7 +29,10 @@ import { EditIcon, SearchIcon } from '@chakra-ui/icons';
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        p={5}>
+        p={5}
+        as={NextLink} 
+        href={href}
+        >
         <Stack align={'start'} spacing={2}>
           <Flex
             w={16}
@@ -47,7 +49,7 @@ import { EditIcon, SearchIcon } from '@chakra-ui/icons';
               {description}
             </Text>
           </Box>
-          <Button  as={NextLink} href={href}  variant={'link'} colorScheme={'blue'} size={'sm'}>
+          <Button textAlign={'center'}  colorScheme={'blue'} size={'sm'}>
             Learn more
           </Button>
         </Stack>
@@ -83,7 +85,7 @@ import { EditIcon, SearchIcon } from '@chakra-ui/icons';
               description={
                 'You would like to share a review / salary / interview'
               }
-              href={'#'}
+              href={'/evaluation'}
             />
             
           </Flex>
