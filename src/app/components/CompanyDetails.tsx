@@ -325,7 +325,7 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                                         </Thead>
                                         <Tbody>
                                             {
-                                                dataEvaluation.map((d)=>{
+                                                dataEvaluation.map((d:any)=>{
                                                     return d["What would you like to do ? "] === "Salary" ? 
                                                     (   <>
                                                             <Tr textAlign={'center'}>
