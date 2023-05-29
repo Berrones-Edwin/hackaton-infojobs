@@ -33,7 +33,7 @@ const levelInterviewProcess = {
     "Very Difficult": 0
 }
 
-function evaluatePeopleRating(data) {
+function evaluatePeopleRating(data:any) {
     data.forEach((d: any) => {
         if (d["What would you like to do ? "] === "Company Review") {
 
@@ -45,7 +45,7 @@ function evaluatePeopleRating(data) {
 
 }
 
-function evaluateinterviewRating(data) {
+function evaluateinterviewRating(data:any) {
     data.forEach((d: any) => {
         if (d["What would you like to do ? "] === "Interview") {
             interviewRating[d["Rate Overall Experience"]] += 1
@@ -54,7 +54,7 @@ function evaluateinterviewRating(data) {
 
 }
 
-function evaluateInterviewProcess(data) {
+function evaluateInterviewProcess(data:any) {
     data.forEach((d: any) => {
         if (d["What would you like to do ? "] === "Interview") {
             levelInterviewProcess[d["Level interview process."]] += 1
