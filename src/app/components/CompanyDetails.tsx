@@ -29,10 +29,17 @@ import {
     TableCaption,
     ListIcon,
     Thead,
-    Th
+    Th,
+    Tabs,
+    TabList,
+    Tab,
+    TabPanels,
+    TabPanel
 } from '@chakra-ui/react';
 import { useEffect, useId } from 'react';
 import Link from 'next/link'
+import PieGraphics from './PieGraphics';
+import PieInterviewRating from './PieInterviewRating';
 type Props = {
     details: {
         name: string,
@@ -41,13 +48,13 @@ type Props = {
         logo: string
     },
     dataEvaluation: any,
-    peopleRating:any,
-    interviewRating:{Good:number,Bad:number},
-    levelInterviewProcess:any
+    peopleRating: any,
+    interviewRating: { Good: number, Bad: number },
+    levelInterviewProcess: any
 }
 
 
-export default function CompanyDetails({ details, dataEvaluation,peopleRating,interviewRating,levelInterviewProcess }: Props) {
+export default function CompanyDetails({ details, dataEvaluation, peopleRating, interviewRating, levelInterviewProcess }: Props) {
 
     const id = useId()
 
@@ -70,111 +77,139 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                         w={'100%'}
                         h={{ base: '100%', sm: '400px', lg: '500px' }}
                     />
-                    {/* Rating */}
-                    <Box w='100%'>
-                        <Text
-                            fontSize={{ base: '16px', lg: '18px' }}
-                            color={useColorModeValue('yellow.500', 'yellow.300')}
-                            fontWeight={'500'}
-                            textTransform={'uppercase'}
-                            mb={'4'}
-                            textAlign={'center'}>
-                            Rating
-                        </Text>
+                    <Tabs>
+                        <TabList>
+                            <Tab color="black">Metrics</Tab>
+                            <Tab color="black">Charts</Tab>
+                        </TabList>
+
+                        <TabPanels>
+                            <TabPanel>
+                                {/* Rating */}
+                                <Box w='100%'>
+                                    <Text
+                                        fontSize={{ base: '16px', lg: '18px' }}
+                                        color={useColorModeValue('yellow.500', 'yellow.300')}
+                                        fontWeight={'500'}
+                                        textTransform={'uppercase'}
+                                        mb={'4'}
+                                        textAlign={'center'}>
+                                        Rating
+                                    </Text>
 
 
-                        <SimpleGrid spacing={10}>
+                                    <SimpleGrid spacing={10}>
 
 
-                            <TableContainer>
-                                <Table size='sm' border="0" variant="unstyled">
-                                    <TableCaption><b>People who share their rating</b></TableCaption>
-                                    <Tbody>
+                                        <TableContainer>
+                                            <Table size='sm' border="0" variant="unstyled">
+                                                <TableCaption><b>People who share their rating</b></TableCaption>
+                                                <Tbody>
 
-                                        {
-                                            Array.from({ length: 5 }).map((idx, arr) => (
-                                                <Tr key={id + '.-' + arr}>
-                                                    <Td>{"⭐".repeat(arr + 1)}</Td>
-                                                    <Td>{peopleRating[arr + 1]}</Td>
-                                                </Tr>
-                                            ))
-                                        }
-                                    </Tbody>
-                                </Table>
-                            </TableContainer>
+                                                    {
+                                                        Array.from({ length: 5 }).map((idx, arr) => (
+                                                            <Tr key={id + '.-' + arr}>
+                                                                <Td>{"⭐".repeat(arr + 1)}</Td>
+                                                                <Td>{peopleRating[arr + 1]}</Td>
+                                                            </Tr>
+                                                        ))
+                                                    }
+                                                </Tbody>
+                                            </Table>
+                                        </TableContainer>
 
-                        </SimpleGrid>
-                    </Box>
-                    {/* End Rating */}
+                                    </SimpleGrid>
+                                </Box>
+                                {/* End Rating */}
 
-                    <Box>
-                        <Text
-                            fontSize={{ base: '16px', lg: '18px' }}
-                            color={useColorModeValue('yellow.500', 'yellow.300')}
-                            fontWeight={'500'}
-                            textTransform={'uppercase'}
-                            mb={'4'}
-                            textAlign={'center'}
-                        >
-                            Interview Rating
-                        </Text>
-                        {/* Rate Overall Experience */}
-                        <SimpleGrid spacing={10}>
 
-                            <TableContainer>
-                                <Table size='sm' border="0" variant="unstyled">
-                                    <TableCaption><b>Rate Overall Experience</b></TableCaption>
-                                    <Tbody>
-                                        <Tr >
-                                            <Td>Good</Td>
-                                            <Td> {interviewRating['Good']}</Td>
-                                        </Tr>
-                                        <Tr >
-                                            <Td>Bad</Td>
-                                            <Td> {interviewRating['Bad']}</Td>
-                                        </Tr>
-                                    </Tbody>
-                                </Table>
-                            </TableContainer>
+                                {/* Rate Overall Experience */}
+                                <Box>
+                                    <Text
+                                        fontSize={{ base: '16px', lg: '18px' }}
+                                        color={useColorModeValue('yellow.500', 'yellow.300')}
+                                        fontWeight={'500'}
+                                        textTransform={'uppercase'}
+                                        mb={'4'}
+                                        textAlign={'center'}
+                                    >
+                                        Interview Rating
+                                    </Text>
 
-                        </SimpleGrid>
-                        {/* End Rate Overall Experience */}
+                                    <SimpleGrid spacing={10}>
 
-                        {/* Level interview process */}
-                        <SimpleGrid spacing={10}>
+                                        <TableContainer>
+                                            <Table size='sm' border="0" variant="unstyled">
+                                                <TableCaption><b>Rate Overall Experience</b></TableCaption>
+                                                <Tbody>
+                                                    <Tr >
+                                                        <Td>Good</Td>
+                                                        <Td> {interviewRating['Good']}</Td>
+                                                    </Tr>
+                                                    <Tr >
+                                                        <Td>Bad</Td>
+                                                        <Td> {interviewRating['Bad']}</Td>
+                                                    </Tr>
+                                                </Tbody>
+                                            </Table>
+                                        </TableContainer>
 
-                            <TableContainer>
-                                <Table size='sm' border="0" variant="unstyled">
-                                    <TableCaption><b>Level interview process</b></TableCaption>
-                                    <Tbody>
-                                        <Tr >
-                                            <Td>Very Easy</Td>
-                                            <Td> {levelInterviewProcess['Very Easy']}</Td>
-                                        </Tr>
-                                        <Tr >
-                                            <Td>Easy</Td>
-                                            <Td> {levelInterviewProcess['Easy']}</Td>
-                                        </Tr>
-                                        <Tr >
-                                            <Td>Average</Td>
-                                            <Td> {levelInterviewProcess['Average']}</Td>
-                                        </Tr>
-                                        <Tr >
-                                            <Td>Difficult</Td>
-                                            <Td> {levelInterviewProcess['Difficult']}</Td>
-                                        </Tr>
-                                        <Tr >
-                                            <Td>Very Difficult</Td>
-                                            <Td> {levelInterviewProcess['Very Difficult']}</Td>
-                                        </Tr>
+                                    </SimpleGrid>
+                                    {/* End Rate Overall Experience */}
 
-                                    </Tbody>
-                                </Table>
-                            </TableContainer>
+                                    {/* Level interview process */}
+                                    <SimpleGrid spacing={10}>
 
-                        </SimpleGrid>
-                        {/* End Level interview process */}
-                    </Box>
+                                        <TableContainer>
+                                            <Table size='sm' border="0" variant="unstyled">
+                                                <TableCaption><b>Level interview process</b></TableCaption>
+                                                <Tbody>
+                                                    <Tr >
+                                                        <Td>Very Easy</Td>
+                                                        <Td> {levelInterviewProcess['Very Easy']}</Td>
+                                                    </Tr>
+                                                    <Tr >
+                                                        <Td>Easy</Td>
+                                                        <Td> {levelInterviewProcess['Easy']}</Td>
+                                                    </Tr>
+                                                    <Tr >
+                                                        <Td>Average</Td>
+                                                        <Td> {levelInterviewProcess['Average']}</Td>
+                                                    </Tr>
+                                                    <Tr >
+                                                        <Td>Difficult</Td>
+                                                        <Td> {levelInterviewProcess['Difficult']}</Td>
+                                                    </Tr>
+                                                    <Tr >
+                                                        <Td>Very Difficult</Td>
+                                                        <Td> {levelInterviewProcess['Very Difficult']}</Td>
+                                                    </Tr>
+
+                                                </Tbody>
+                                            </Table>
+                                        </TableContainer>
+
+                                    </SimpleGrid>
+                                    {/* End Level interview process */}
+                                </Box>
+                                {/* End Rate Overall Experience */}
+                            </TabPanel>
+                            <TabPanel>
+                                <Box>
+                                    <SimpleGrid mt={2} spacing={10}>
+                                        <PieGraphics peopleRating={peopleRating} />
+                                        
+                                    </SimpleGrid>
+                                    <SimpleGrid mt={2} spacing={10}>
+                                        <PieInterviewRating interviewRating={interviewRating} />
+                                    </SimpleGrid>
+                                </Box>
+                            </TabPanel>
+                            <TabPanel>
+                                <p>three!</p>
+                            </TabPanel>
+                        </TabPanels>
+                    </Tabs>
                 </Flex>
                 <Stack spacing={{ base: 6, md: 10 }}>
                     <Box as={'header'}>
@@ -242,7 +277,7 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                                 </List>
                                 <List spacing={2}>
                                     {
-                                        dataEvaluation.map((d:any) => (
+                                        dataEvaluation.map((d: any) => (
                                             d['Cons'] === "" ? null :
                                                 <ListItem key={d['Marca temporal'] + "***" + id}>
                                                     <ListIcon as={SmallCloseIcon} color='red.500' />
@@ -254,7 +289,7 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                             </SimpleGrid>
                             <SimpleGrid mt={2} spacing={10}>
                                 {
-                                    dataEvaluation.every((d:any) => d['Advice'] === "" || null) ? null :
+                                    dataEvaluation.every((d: any) => d['Advice'] === "" || null) ? null :
                                         <>
                                             <p>Advices</p>
                                             <List spacing={2}>
@@ -325,9 +360,9 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                                         </Thead>
                                         <Tbody>
                                             {
-                                                dataEvaluation.map((d:any)=>{
-                                                    return d["What would you like to do ? "] === "Salary" ? 
-                                                    (   <>
+                                                dataEvaluation.map((d: any) => {
+                                                    return d["What would you like to do ? "] === "Salary" ?
+                                                        (<>
                                                             <Tr textAlign={'center'}>
                                                                 <Td>{d['Job Title']}</Td>
                                                                 <Td>{d['Job Level']}</Td>
@@ -337,10 +372,10 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
                                                                 <Td>{d['Base Pay']} / {d['Currency']} </Td>
                                                             </Tr>
                                                         </>
-                                                    ) 
-                                                    :null
+                                                        )
+                                                        : null
                                                 })
-                                            }                                            
+                                            }
                                         </Tbody>
                                     </Table>
                                 </TableContainer>
@@ -348,7 +383,10 @@ export default function CompanyDetails({ details, dataEvaluation,peopleRating,in
 
 
                         </Box>
+
+
                     </Stack>
+
 
                     <Button
                         as={Link}
