@@ -33,31 +33,56 @@ const levelInterviewProcess = {
     "Very Difficult": 0
 }
 
-function evaluatePeopleRating(data:any) {
+function evaluatePeopleRating(data: any) {
     data.forEach((d: any) => {
         if (d["What would you like to do ? "] === "Company Review") {
 
-            let index = d["Overall Rating ⭐"]
-            peopleRating[index] += 1
+
+
+            let x: keyof {
+                1: number;
+                2: number;
+                3: number;
+                4: number;
+                5: number;
+            } = d["Overall Rating ⭐"]
+
+
+            peopleRating[x] += 1
 
         }
     })
 
 }
 
-function evaluateinterviewRating(data:any) {
+function evaluateinterviewRating(data: any) {
     data.forEach((d: any) => {
         if (d["What would you like to do ? "] === "Interview") {
-            interviewRating[d["Rate Overall Experience"]] += 1
+
+            let idx: keyof {
+                Bad: number;
+                Good: number;
+            } = d["Rate Overall Experience"]
+
+            interviewRating[idx] += 1
         }
     })
 
 }
 
-function evaluateInterviewProcess(data:any) {
+function evaluateInterviewProcess(data: any) {
     data.forEach((d: any) => {
         if (d["What would you like to do ? "] === "Interview") {
-            levelInterviewProcess[d["Level interview process."]] += 1
+
+            let idx: keyof {
+                "Very Easy": number;
+                Easy: number;
+                Average: number;
+                Difficult: number;
+                "Very Difficult": number;
+            } = d["Level interview process."]
+
+            levelInterviewProcess[idx] += 1
         }
     })
 
@@ -69,7 +94,7 @@ export default async function Results() {
 
 
 
-    const data:any = await getData()
+    const data: any = await getData()
     evaluatePeopleRating(data)
     evaluateinterviewRating(data)
     evaluateInterviewProcess(data)
