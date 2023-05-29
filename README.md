@@ -10,10 +10,15 @@ Company Evaluation is a website that allows you easily share information  about 
 - TypeScript
 - Chakra UI
 
+## Note
+- The data is a mock, I have problems with the CORS. ( **the data mock is from API InfoJobs** )
+- There isnt a endpoint to get all the companies. (this would be useful to add these data to the google forms)
+- To see the dashboard / metrics, please type "**infojobs**" (this company has already example people opinions ) in the input  
+
 
 ## Demo
 
-If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](url)
+If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](https://hackaton-infojobs-zeta.vercel.app/)
 
 
 ## Installation | Instalación
