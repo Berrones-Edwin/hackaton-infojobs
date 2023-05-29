@@ -160,7 +160,6 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
             <Flex
                 as={LinkNext}
                 py={2}
-                as={Link}
                 href={href ?? '#'}
                 justify={'space-between'}
                 align={'center'}

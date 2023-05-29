@@ -22,7 +22,7 @@ export default function CompanyNotFound() {
                 Company not found
             </Heading>
             <Text color={'black.500'}>
-                Sorry, we couldn't find the company. Try again.
+                {`Sorry, we couldn't find the company. Try again.`}
             </Text>
         </Box>
     )
