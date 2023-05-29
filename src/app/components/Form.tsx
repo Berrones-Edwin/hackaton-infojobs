@@ -11,7 +11,7 @@ type Props = { dataEvaluation: any, peopleRating: any, interviewRating: any, lev
 
 export default function Form({ dataEvaluation, peopleRating, interviewRating, levelInterviewProcess }: Props) {
     const [form, setForm] = useState('')
-    const [data, setData] = useState(null)
+    const [data, setData] = useState<{ name: string; logo: string; description: string; sdrn: string; }>({ name: "", logo: "", description: "", sdrn: "" })
     const [flag, setFlag] = useState(false)
     const [newDataEvaluation, setNewDataEvaluation] = useState(null)
 
@@ -29,7 +29,7 @@ export default function Form({ dataEvaluation, peopleRating, interviewRating, le
         // console.log({ responseJSON });
 
 
-        const companyData = dataMock.items.find((name) => name.name.toLowerCase() === form.toLowerCase())
+        const companyData: any = dataMock.items.find((name) => name.name.toLowerCase() === form.toLowerCase())
 
 
         setData(companyData)
@@ -62,12 +62,12 @@ export default function Form({ dataEvaluation, peopleRating, interviewRating, le
                 </Stack>
                 <Stack>
                     {
-                        newDataEvaluation === null || undefined || newDataEvaluation?.length === 0 ? null : <CompanyDetails peopleRating={peopleRating} 
-                                                        details={data} 
-                                                        dataEvaluation={newDataEvaluation} 
-                                                        interviewRating={interviewRating}
-                                                        levelInterviewProcess={levelInterviewProcess}
-                         />
+                        newDataEvaluation === null || undefined || newDataEvaluation?.length === 0 ? null : <CompanyDetails peopleRating={peopleRating}
+                            details={data}
+                            dataEvaluation={newDataEvaluation}
+                            interviewRating={interviewRating}
+                            levelInterviewProcess={levelInterviewProcess}
+                        />
                     }
                     {
                         newDataEvaluation?.length === 0 && flag ? <CompanyNotFound /> : null
