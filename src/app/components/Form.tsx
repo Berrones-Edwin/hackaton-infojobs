@@ -7,7 +7,9 @@ import CompanyDetails from "./CompanyDetails"
 import CompanyNotFound from "./CompanyNotFound"
 
 
-export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
+type Props = { dataEvaluation: any, peopleRating: any, interviewRating: any, levelInterviewProcess: any }
+
+export default function Form({ dataEvaluation, peopleRating, interviewRating, levelInterviewProcess }: Props) {
     const [form, setForm] = useState('')
     const [data, setData] = useState(null)
     const [flag, setFlag] = useState(false)
@@ -48,7 +50,7 @@ export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
         <>
             <Stack minWidth={'100vw'} flex={'column'} justifyContent={'center'} alignItems={'center'}>
                 <Stack w={'500'} mt={3} h={'150'}>
-                  
+
                     <form onSubmit={handleSubmit}>
                         <FormControl>
                             <FormLabel as='legend'>
@@ -60,7 +62,12 @@ export default function Form({ dataEvaluation }: { dataEvaluation: any }) {
                 </Stack>
                 <Stack>
                     {
-                        newDataEvaluation === null || undefined || newDataEvaluation?.length === 0 ? null : <CompanyDetails details={data} dataEvaluation={newDataEvaluation} />
+                        newDataEvaluation === null || undefined || newDataEvaluation?.length === 0 ? null : <CompanyDetails peopleRating={peopleRating} 
+                                                        details={data} 
+                                                        dataEvaluation={newDataEvaluation} 
+                                                        interviewRating={interviewRating}
+                                                        levelInterviewProcess={levelInterviewProcess}
+                         />
                     }
                     {
                         newDataEvaluation?.length === 0 && flag ? <CompanyNotFound /> : null

@@ -40,65 +40,16 @@ type Props = {
         sdrn: string,
         logo: string
     },
-    dataEvaluation: any
-}
-const peopleRating = {
-    1: 0, 2: 0, 3: 0, 4: 0, 5: 0
-}
-const interviewRating = {
-    "Bad": 0, "Good": 0
+    dataEvaluation: any,
+    peopleRating:any,
+    interviewRating:{Good:number,Bad:number},
+    levelInterviewProcess:any
 }
 
-const levelInterviewProcess = {
-    "Very Easy": 0,
-    "Easy": 0,
-    "Average": 0,
-    "Difficult": 0,
-    "Very Difficult": 0
-}
-export default function CompanyDetails({ details, dataEvaluation }: Props) {
 
+export default function CompanyDetails({ details, dataEvaluation,peopleRating,interviewRating,levelInterviewProcess }: Props) {
 
     const id = useId()
-
-    useEffect(() => {
-
-        dataEvaluation.forEach((d: any) => {
-            if (d["What would you like to do ? "] === "Company Review") {
-
-                let index = parseInt(d["Overall Rating ⭐"])
-                peopleRating[index] += 1
-
-            }
-        })
-    }, [dataEvaluation])
-    useEffect(() => {
-
-        dataEvaluation.forEach((d: any) => {
-            if (d["What would you like to do ? "] === "Interview") {
-
-
-                interviewRating[d["Rate Overall Experience"]] += 1
-
-            }
-        })
-    }, [dataEvaluation])
-    useEffect(() => {
-
-        dataEvaluation.forEach((d: any) => {
-            if (d["What would you like to do ? "] === "Interview") {
-
-
-                levelInterviewProcess[d["Level interview process."]] += 1
-
-             
-                // console.log(levelInterviewProcess["Average"]);
-
-
-
-            }
-        })
-    }, [dataEvaluation])
 
     return (
         <Container maxW={'7xl'}>
@@ -176,11 +127,11 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
                                     <Tbody>
                                         <Tr >
                                             <Td>Good</Td>
-                                            <Td> {interviewRating.Good}</Td>
+                                            <Td> {interviewRating['Good']}</Td>
                                         </Tr>
                                         <Tr >
                                             <Td>Bad</Td>
-                                            <Td> {interviewRating.Bad}</Td>
+                                            <Td> {interviewRating['Bad']}</Td>
                                         </Tr>
                                     </Tbody>
                                 </Table>
@@ -202,7 +153,7 @@ export default function CompanyDetails({ details, dataEvaluation }: Props) {
                                         </Tr>
                                         <Tr >
                                             <Td>Easy</Td>
-                                            <Td> {levelInterviewProcess.Easy}</Td>
+                                            <Td> {levelInterviewProcess['Easy']}</Td>
                                         </Tr>
                                         <Tr >
                                             <Td>Average</Td>
