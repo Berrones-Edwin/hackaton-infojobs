@@ -13,7 +13,7 @@ export default function Form({ dataEvaluation, peopleRating, interviewRating, le
     const [form, setForm] = useState('')
     const [data, setData] = useState<{ name: string; logo: string; description: string; sdrn: string; }>({ name: "", logo: "", description: "", sdrn: "" })
     const [flag, setFlag] = useState(false)
-    const [newDataEvaluation, setNewDataEvaluation] = useState(null)
+    const [newDataEvaluation, setNewDataEvaluation] = useState<any>(null)
 
     const handleSubmit = async (e: any) => {
         e.preventDefault()
