@@ -40,6 +40,7 @@ import { useEffect, useId } from 'react';
 import Link from 'next/link'
 import PieGraphics from './PieGraphics';
 import PieInterviewRating from './PieInterviewRating';
+import PieAverageInterview from './PieAverageInterview';
 type Props = {
     details: {
         name: string,
@@ -202,6 +203,9 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
                                     </SimpleGrid>
                                     <SimpleGrid mt={2} spacing={10}>
                                         <PieInterviewRating interviewRating={interviewRating} />
+                                    </SimpleGrid>
+                                    <SimpleGrid mt={2} spacing={10}>
+                                        <PieAverageInterview levelInterviewProcess={levelInterviewProcess} />
                                     </SimpleGrid>
                                 </Box>
                             </TabPanel>
