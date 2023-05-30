@@ -41,6 +41,7 @@ import Link from 'next/link'
 import PieGraphics from './PieGraphics';
 import PieInterviewRating from './PieInterviewRating';
 import PieAverageInterview from './PieAverageInterview';
+// import SalariesChar from './SalariesChar';
 type Props = {
     details: {
         name: string,
@@ -109,7 +110,7 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
 
                                                     {
                                                         Array.from({ length: 5 }).map((idx, arr) => (
-                                                            <Tr key={id + '.-' + arr}>
+                                                            <Tr key={'.-' + arr}>
                                                                 <Td>{"⭐".repeat(arr + 1)}</Td>
                                                                 <Td>{peopleRating[arr + 1]}</Td>
                                                             </Tr>
@@ -199,7 +200,7 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
                                 <Box>
                                     <SimpleGrid mt={2} spacing={10}>
                                         <PieGraphics peopleRating={peopleRating} />
-                                        
+
                                     </SimpleGrid>
                                     <SimpleGrid mt={2} spacing={10}>
                                         <PieInterviewRating interviewRating={interviewRating} />
@@ -261,34 +262,68 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
                         <Box>
 
                             {/* Cons / Pros / Advices */}
-                            <SimpleGrid mt={2} columns={{ base: 1, md: 2 }} spacing={10}>
-                                <p>Pros</p>
-                                <p>Cons</p>
+                            <SimpleGrid mt={2} spacing={10}>
                                 <List spacing={2}>
-                                    {
-                                        dataEvaluation.map((d: any) => (
 
-                                            d['Pros'] === "" ? null :
-                                                <>
+                                    <Accordion w='100%' allowToggle>
+                                        <AccordionItem>
+                                            <h2>
+                                                <AccordionButton>
+                                                    <Box as="span" flex='1' textAlign='left'>
+                                                        Pros
+                                                    </Box>
+                                                    <AccordionIcon />
+                                                </AccordionButton>
+                                            </h2>
+                                            <AccordionPanel pb={4}>
+                                                {
+                                                    dataEvaluation.map((d: any) => (
 
-                                                    <ListItem key={d['Marca temporal'] + "-" + id}>
-                                                        <ListIcon as={CheckCircleIcon} color='green.500' />
-                                                        {d['Pros']}
-                                                    </ListItem>
-                                                </>
-                                        ))
-                                    }
+                                                        d['Pros'] === "" ? null :
+                                                            <>
+
+                                                                <ListItem key={d['Marca temporal'] + "-" }>
+                                                                    <ListIcon as={CheckCircleIcon} color='green.500' />
+                                                                    {d['Pros']}
+                                                                </ListItem>
+                                                            </>
+                                                    ))
+                                                }
+                                            </AccordionPanel>
+                                        </AccordionItem>
+                                    </Accordion>
                                 </List>
+
+                            </SimpleGrid>
+
+
+
+                            <SimpleGrid mt={2} spacing={10}>
                                 <List spacing={2}>
-                                    {
-                                        dataEvaluation.map((d: any) => (
-                                            d['Cons'] === "" ? null :
-                                                <ListItem key={d['Marca temporal'] + "***" + id}>
-                                                    <ListIcon as={SmallCloseIcon} color='red.500' />
-                                                    {d['Cons']}
-                                                </ListItem>
-                                        ))
-                                    }
+
+                                    <Accordion w='100%' allowToggle>
+                                        <AccordionItem>
+                                            <h2>
+                                                <AccordionButton>
+                                                    <Box as="span" flex='1' textAlign='left'>
+                                                        Cons
+                                                    </Box>
+                                                    <AccordionIcon />
+                                                </AccordionButton>
+                                            </h2>
+                                            <AccordionPanel pb={4}>
+                                                {
+                                                    dataEvaluation.map((d: any) => (
+                                                        d['Cons'] === "" ? null :
+                                                            <ListItem key={d['Marca temporal'] + "***"}>
+                                                                <ListIcon as={SmallCloseIcon} color='red.500' />
+                                                                {d['Cons']}
+                                                            </ListItem>
+                                                    ))
+                                                }
+                                            </AccordionPanel>
+                                        </AccordionItem>
+                                    </Accordion>
                                 </List>
                             </SimpleGrid>
                             <SimpleGrid mt={2} spacing={10}>
@@ -298,7 +333,7 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
                                             <p>Advices</p>
                                             <List spacing={2}>
                                                 {dataEvaluation.map((d: any) => (
-                                                    <ListItem key={d['Marca temporal'] + "//" + id}>
+                                                    <ListItem key={d['Marca temporal'] + "//"}>
                                                         {d['Advice'] === "" ? null : d['Advice']}
                                                     </ListItem>
                                                 ))}
@@ -309,31 +344,38 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
                             {/* End Cons / Pros / Advices */}
                         </Box>
                         <Box>
-                            <Text
-                                fontSize={{ base: '16px', lg: '18px' }}
-                                color={useColorModeValue('yellow.500', 'yellow.300')}
-                                fontWeight={'500'}
-                                textTransform={'uppercase'}
-                                mb={'4'}>
-                                Describe your interview process
-                            </Text>
 
                             <SimpleGrid mt={2} spacing={10}>
-                                {
+                                <Accordion w='100%' allowToggle>
+                                    <AccordionItem>
+                                        <h2>
+                                            <AccordionButton>
+                                                <Box as="span" flex='1' textAlign='left'>
+                                                    Interview process
+                                                </Box>
+                                                <AccordionIcon />
+                                            </AccordionButton>
+                                        </h2>
+                                        <AccordionPanel pb={4}>
+                                            {
 
-                                    <>
+                                                <>
 
-                                        <List spacing={2}>
-                                            {dataEvaluation.map((d: any) => (
-                                                d['Describe your interview process'] === "" ? null :
-                                                    <ListItem key={d['Marca temporal'] + "/-/" + id}>
-                                                        <ListIcon as={CheckCircleIcon} color='green.500' />
-                                                        {d['Describe your interview process']}
-                                                    </ListItem>
-                                            ))}
-                                        </List>
-                                    </>
-                                }
+                                                    <List spacing={2}>
+                                                        {dataEvaluation.map((d: any) => (
+                                                            d['Describe your interview process'] === "" ? null :
+                                                                <ListItem key={d['Marca temporal'] + "/-/"}>
+                                                                    <ListIcon as={CheckCircleIcon} color='green.500' />
+                                                                    {d['Describe your interview process']}
+                                                                </ListItem>
+                                                        ))}
+                                                    </List>
+                                                </>
+                                            }
+                                        </AccordionPanel>
+                                    </AccordionItem>
+                                </Accordion>
+
                             </SimpleGrid>
 
                         </Box>
@@ -345,13 +387,13 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
                                 fontWeight={'500'}
                                 textTransform={'uppercase'}
                                 mb={'4'}>
-                                Details People Share Their Salary
+                                Details People Who Share Their Salary
                             </Text>
 
                             <SimpleGrid mt={2} spacing={10}>
                                 <TableContainer>
                                     <Table variant='simple' color="white">
-                                        {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
+
                                         <Thead >
                                             <Tr>
                                                 <Th color="white">Job Title</Th>
@@ -387,6 +429,11 @@ export default function CompanyDetails({ details, dataEvaluation, peopleRating, 
 
 
                         </Box>
+                        {/* <Box>
+                            <SimpleGrid mt={2} spacing={10}>
+                                <SalariesChar salaries={dataEvaluation} />
+                            </SimpleGrid>
+                        </Box> */}
 
 
                     </Stack>
